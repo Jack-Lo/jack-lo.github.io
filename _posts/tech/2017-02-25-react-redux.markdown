@@ -13,7 +13,7 @@ nav: Tech
 
 官方文档对redux的介绍：  
 
-> Redux是JavaScript状态容器，提供可预测化的状态管理。
+> Redux是javascript状态容器，提供可预测化的状态管理。
 
 注意，redux的集成是非必选的。通过之前的内容介绍我们了解到，单枪匹马的react构建的页面也可以运作得很好。  
 
@@ -334,7 +334,7 @@ export default combineReducers({
 
 假设我们原有项目（react+react-router）的入口文件`App.jsx`如下：  
 
-```jsx
+```javascript
 import React, { Component, PropTypes } from 'react'
 import ReactDom from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
@@ -365,7 +365,7 @@ import { Provider, connect } from 'react-redux'
 
 `createStore`是用来创建store的，`applyMiddleware`是用来整合接入`middleware`的，这个我们后面再介绍，`Provider`是用来实现`store`的全局访问的，而`connect`则是用来针对某个展示组件，创建包裹这个组件的容器组件的，有点绕，这个我们也留在后面再介绍。  
 
-```jsx
+```javascript
 import React, { Component, PropTypes } from 'react'
 import ReactDom from 'react-dom'
 import { Router, Route, IndexRoute, hashHistory } from 'react-router'
@@ -414,7 +414,7 @@ ReactDom.render(
 
 我们把视线转移到页面上，这个例子当中有一个页面`Index`，我们来看：  
 
-```jsx
+```javascript
 import React from 'react'
 
 import Card from '../../components/Card'
@@ -436,7 +436,7 @@ const Index = React.createClass({
 
 connect需要知道你这个组件需要获取哪些state，以及你需要dispatch哪些action，我们通过下面的方式来表达：  
 
-```jsx
+```javascript
 import React from 'react'
 
 import Card from '../../components/Card'
@@ -480,7 +480,7 @@ mapStateToProps中传入的state就是整个应用的state，mapDispatchToProps�
 
 由于Index是页面，所以我们在mapStateToProps中直接return了整个state，代表整个state都可以通过props访问到：  
 
-```jsx
+```javascript
 const Index = React.createClass({
   render () {
     return <div className="g-index">
@@ -495,7 +495,7 @@ const Index = React.createClass({
 
 我们再来看看两个子组件：  
 
-```jsx
+```javascript
 // Card.jsx
 import React from 'react'
 import { connect } from 'react-redux'
@@ -523,7 +523,7 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps)(Card)
 ```
 
-```jsx
+```javascript
 // Dialog.jsx
 import React from 'react'
 import { connect } from 'react-redux'
@@ -578,7 +578,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Dialog)
 
 我想你可能是这样想的：  
 
-```jsx
+```javascript
 import React from 'react'
 
 import Card from '../../components/Card'
@@ -608,7 +608,7 @@ export default Index
 
 事实上，上面这段代码是会报错的，因为store并不在props上；但是，我们确实可以直接获取到store，正确的获取方式是这样的：  
 
-```jsx
+```javascript
 import React from 'react'
 
 import Card from '../../components/Card'
@@ -694,7 +694,7 @@ function mapDispatchToProps(dispatch) {
 
 官方推荐了一个用于实现相同功能的middleware——[redux-logger](#)，我们可以直接使用：  
 
-```jsx
+```javascript
 // App.jsx
 import createLogger from 'redux-logger'
 const store = createStore(reducer, initState, applyMiddleware(createLogger()))

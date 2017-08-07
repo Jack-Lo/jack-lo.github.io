@@ -18,10 +18,17 @@ a {
 }
 
 blockquote {
-  background-color: #efefef;
-  border-left: 3px solid #ccc;
-  padding: .1rem 1rem;
+  border-left: 3px solid #e7e7e7;
+  padding: 0 1rem;
   margin: 0;
+
+  p {
+    margin-top: 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .highlighter-rouge {

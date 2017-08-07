@@ -45,7 +45,7 @@
 <p>官方文档对redux的介绍：</p>
 
 <blockquote>
-  <p>Redux是JavaScript状态容器，提供可预测化的状态管理。</p>
+  <p>Redux是javascript状态容器，提供可预测化的状态管理。</p>
 </blockquote>
 
 <p>注意，redux的集成是非必选的。通过之前的内容介绍我们了解到，单枪匹马的react构建的页面也可以运作得很好。</p>
@@ -365,20 +365,21 @@
 
 <p>假设我们原有项目（react+react-router）的入口文件<code class="highlighter-rouge">App.jsx</code>如下：</p>
 
-<pre><code class="language-jsx">import React, { Component, PropTypes } from 'react'
-import ReactDom from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDom</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">hashHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import Index from './containers/index'
-import About from './containers/about'
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">'./containers/index'</span>
+<span class="kr">import</span> <span class="nx">About</span> <span class="nx">from</span> <span class="s1">'./containers/about'</span>
 
-ReactDom.render(
-  &lt;Router history={hashHistory}&gt;
-    &lt;Route path="/" component={Index}/&gt;
-  &lt;/Router&gt;,
-  document.getElementById('root')
-)
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Index</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/Router&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
 <p>在react中使用redux需要装两个包：</p>
 
@@ -395,42 +396,43 @@ ReactDom.render(
 
 <p><code class="highlighter-rouge">createStore</code>是用来创建store的，<code class="highlighter-rouge">applyMiddleware</code>是用来整合接入<code class="highlighter-rouge">middleware</code>的，这个我们后面再介绍，<code class="highlighter-rouge">Provider</code>是用来实现<code class="highlighter-rouge">store</code>的全局访问的，而<code class="highlighter-rouge">connect</code>则是用来针对某个展示组件，创建包裹这个组件的容器组件的，有点绕，这个我们也留在后面再介绍。</p>
 
-<pre><code class="language-jsx">import React, { Component, PropTypes } from 'react'
-import ReactDom from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDom</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">hashHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import Index from './containers/index'
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">'./containers/index'</span>
 
-// 引入redux
-import { createStore, applyMiddleware } from 'redux'
-import { Provider, connect } from 'react-redux'
+<span class="c1">// 引入redux</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">createStore</span><span class="p">,</span> <span class="nx">applyMiddleware</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'redux'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Provider</span><span class="p">,</span> <span class="nx">connect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
 
-// 引入reducer
-import reducer from './reducers'
+<span class="c1">// 引入reducer</span>
+<span class="kr">import</span> <span class="nx">reducer</span> <span class="nx">from</span> <span class="s1">'./reducers'</span>
 
-// 创建一个初始化的state
-var initState = {
-  card: {
-    name: 'Jack',
-    picture: 'a.jpg'
-  },
-  dialog: {
-    status: false
-  }
-}
+<span class="c1">// 创建一个初始化的state</span>
+<span class="kd">var</span> <span class="nx">initState</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">card</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="s1">'Jack'</span><span class="p">,</span>
+    <span class="na">picture</span><span class="p">:</span> <span class="s1">'a.jpg'</span>
+  <span class="p">},</span>
+  <span class="na">dialog</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">status</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-// 创建store
-const store = createStore(reducer, initState)
+<span class="c1">// 创建store</span>
+<span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initState</span><span class="p">)</span>
 
-ReactDom.render(
-  &lt;Provider store={store}&gt;
-    &lt;Router history={hashHistory}&gt;
-      &lt;Route path="/" component={Index}/&gt;
-    &lt;/Router&gt;
-  &lt;/Provider&gt;,
-  document.getElementById('root')
-)
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Provider</span> <span class="nx">store</span><span class="o">=</span><span class="p">{</span><span class="nx">store</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Index</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/Router</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/Provider&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
 <p>这样，我们就集成了redux！</p>
 
@@ -442,20 +444,21 @@ ReactDom.render(
 
 <p>我们把视线转移到页面上，这个例子当中有一个页面<code class="highlighter-rouge">Index</code>，我们来看：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-import Card from '../../components/Card'
-import Dialog from '../../components/Dialog'
+<span class="kr">import</span> <span class="nx">Card</span> <span class="nx">from</span> <span class="s1">'../../components/Card'</span>
+<span class="kr">import</span> <span class="nx">Dialog</span> <span class="nx">from</span> <span class="s1">'../../components/Dialog'</span>
 
-const Index = React.createClass({
-  render () {
-    return &lt;div className="g-index"&gt;
-      &lt;Card /&gt;
-      &lt;Dialog /&gt;
-    &lt;/div&gt;
-  }
-})
+<span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Card</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Dialog</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <p>我们需要将这个页面需要的state以及修改state的handler注入给它；这个state现在由store管理了，而这个handler也应该对应变成dispatch(action)！</p>
 
@@ -463,42 +466,43 @@ const Index = React.createClass({
 
 <p>connect需要知道你这个组件需要获取哪些state，以及你需要dispatch哪些action，我们通过下面的方式来表达：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-import Card from '../../components/Card'
-import Dialog from '../../components/Dialog'
+<span class="kr">import</span> <span class="nx">Card</span> <span class="nx">from</span> <span class="s1">'../../components/Card'</span>
+<span class="kr">import</span> <span class="nx">Dialog</span> <span class="nx">from</span> <span class="s1">'../../components/Dialog'</span>
 
-const Index = React.createClass({
-  render () {
-    return &lt;div className="g-index"&gt;
-      &lt;Card /&gt;
-      &lt;Dialog /&gt;
-    &lt;/div&gt;
-  }
-})
+<span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Card</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Dialog</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">}</span>
+<span class="p">})</span>
 
-function mapStateToProps(state) {
-  return state
-}
+<span class="kd">function</span> <span class="nx">mapStateToProps</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">state</span>
+<span class="p">}</span>
 
-function mapDispatchToProps(dispatch) {
-  return {
-    changeName () {
-      dispatch({
-        type: 'CHANGE_NAME',
-        name: '葬爱'
-      })
-    },
-    showDialog () {
-      dispatch({
-        type: 'SHOW_DIALOG'
-      })
-    }
-  }
-}
+<span class="kd">function</span> <span class="nx">mapDispatchToProps</span><span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">changeName</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'CHANGE_NAME'</span><span class="p">,</span>
+        <span class="na">name</span><span class="p">:</span> <span class="s1">'葬爱'</span>
+      <span class="p">})</span>
+    <span class="p">},</span>
+    <span class="nx">showDialog</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'SHOW_DIALOG'</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-export default connect(mapStateToProps, mapDispatchToProps)(Index)
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">mapDispatchToProps</span><span class="p">)(</span><span class="nx">Index</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>mapStateToProps中传入的state就是整个应用的state，mapDispatchToProps中传入的dispatch就是store的dispatch！</p>
 
@@ -506,84 +510,87 @@ export default connect(mapStateToProps, mapDispatchToProps)(Index)
 
 <p>由于Index是页面，所以我们在mapStateToProps中直接return了整个state，代表整个state都可以通过props访问到：</p>
 
-<pre><code class="language-jsx">const Index = React.createClass({
-  render () {
-    return &lt;div className="g-index"&gt;
-      &lt;Card /&gt;
-      &lt;Dialog /&gt;
-      &lt;button onClick={this.props.changeName}&gt;change name&lt;/button&gt;
-      &lt;button onClick={this.props.showDialog}&gt;show dialog&lt;/button&gt;
-    &lt;/div&gt;
-  }
-})
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Card</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Dialog</span> <span class="o">/&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">changeName</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">change</span> <span class="nx">name</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">showDialog</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">show</span> <span class="nx">dialog</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <p>我们再来看看两个子组件：</p>
 
-<pre><code class="language-jsx">// Card.jsx
-import React from 'react'
-import { connect } from 'react-redux'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Card.jsx</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
 
-const Card = (props) =&gt; {
-  return &lt;div className="m-card"&gt;
-    &lt;div&gt;
-      姓名：{props.name}
-    &lt;/div&gt;
-    &lt;div&gt;
-      照片：{props.picture}
-    &lt;/div&gt;
-  &lt;/div&gt;
-}
+<span class="kr">const</span> <span class="nx">Card</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"m-card"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="err">姓名：</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="err">照片：</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">picture</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
 
-function mapStateToProps(state) {
-  var info = state.card
+<span class="kd">function</span> <span class="nx">mapStateToProps</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">card</span>
 
-  return {
-    name: info.name,
-    picture: info.picture
-  }
-}
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nx">info</span><span class="p">.</span><span class="nx">name</span><span class="p">,</span>
+    <span class="na">picture</span><span class="p">:</span> <span class="nx">info</span><span class="p">.</span><span class="nx">picture</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-export default connect(mapStateToProps)(Card)
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">)(</span><span class="nx">Card</span><span class="p">)</span>
 </code></pre>
+</div>
 
-<pre><code class="language-jsx">// Dialog.jsx
-import React from 'react'
-import { connect } from 'react-redux'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// Dialog.jsx</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">connect</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-redux'</span>
 
-const Dialog = (props) =&gt; {
-  if (!props.status) {
-    return null
-  }
+<span class="kr">const</span> <span class="nx">Dialog</span> <span class="o">=</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">props</span><span class="p">.</span><span class="nx">status</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span>
+  <span class="p">}</span>
 
-  return &lt;div className="m-dialog"&gt;
-    &lt;div&gt;
-      dialog
-    &lt;/div&gt;
-    &lt;button onClick={props.hideDialog}&gt;close&lt;/button&gt;
-  &lt;/div&gt;
-}
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"m-dialog"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="nx">dialog</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">hideDialog</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">close</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
 
-function mapStateToProps(state) {
-  var info = state.dialog
+<span class="kd">function</span> <span class="nx">mapStateToProps</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">info</span> <span class="o">=</span> <span class="nx">state</span><span class="p">.</span><span class="nx">dialog</span>
 
-  return {
-    status: info.status
-  }
-}
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">status</span><span class="p">:</span> <span class="nx">info</span><span class="p">.</span><span class="nx">status</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-function mapDispatchToProps(dispatch) {
-  return {
-    hideDialog () {
-      dispatch({
-        type: 'CLOSE_DIALOG'
-      })
-    }
-  }
-}
+<span class="kd">function</span> <span class="nx">mapDispatchToProps</span><span class="p">(</span><span class="nx">dispatch</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">hideDialog</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="na">type</span><span class="p">:</span> <span class="s1">'CLOSE_DIALOG'</span>
+      <span class="p">})</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dialog)
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">connect</span><span class="p">(</span><span class="nx">mapStateToProps</span><span class="p">,</span> <span class="nx">mapDispatchToProps</span><span class="p">)(</span><span class="nx">Dialog</span><span class="p">)</span>
 </code></pre>
+</div>
 
 <p>同样的，需要哪些state，就在mapStateToProps里return，需要哪些handler就在mapDispatchToProps里return，是不是很简单？</p>
 
@@ -601,63 +608,65 @@ export default connect(mapStateToProps, mapDispatchToProps)(Dialog)
 
 <p>我想你可能是这样想的：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-import Card from '../../components/Card'
-import Dialog from '../../components/Dialog'
+<span class="kr">import</span> <span class="nx">Card</span> <span class="nx">from</span> <span class="s1">'../../components/Card'</span>
+<span class="kr">import</span> <span class="nx">Dialog</span> <span class="nx">from</span> <span class="s1">'../../components/Dialog'</span>
 
-const Index = React.createClass({
-  render () {
-    var store = this.props.store
-    var state = store.getState()
+<span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">store</span>
+    <span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>
 
-    return &lt;div className="g-index"&gt;
-      &lt;div&gt;
-        {state.card.name}
-      &lt;/div&gt;
-      &lt;button onClick={this.changeName}&gt;change name&lt;/button&gt;
-    &lt;/div&gt;
-  },
-  changeName () {
-    this.props.store.dispatch({type: 'CHANGE_NAME', name: '葬爱'})
-  }
-})
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">card</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">changeName</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">change</span> <span class="nx">name</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="nx">changeName</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span><span class="na">type</span><span class="p">:</span> <span class="s1">'CHANGE_NAME'</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'葬爱'</span><span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 
-export default Index
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Index</span>
 </code></pre>
+</div>
 
 <p>这样好像简单了很多！</p>
 
 <p>事实上，上面这段代码是会报错的，因为store并不在props上；但是，我们确实可以直接获取到store，正确的获取方式是这样的：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-import Card from '../../components/Card'
-import Dialog from '../../components/Dialog'
+<span class="kr">import</span> <span class="nx">Card</span> <span class="nx">from</span> <span class="s1">'../../components/Card'</span>
+<span class="kr">import</span> <span class="nx">Dialog</span> <span class="nx">from</span> <span class="s1">'../../components/Dialog'</span>
 
-const Index = React.createClass({
-  render () {
-    var store = this.context.store
-    var state = store.getState()
+<span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">store</span>
+    <span class="kd">var</span> <span class="nx">state</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>
 
-    return &lt;div className="g-index"&gt;
-      &lt;div&gt;
-        {state.card.name}
-      &lt;/div&gt;
-      &lt;button onClick={this.changeName}&gt;change name&lt;/button&gt;
-    &lt;/div&gt;
-  },
-  changeName () {
-    this.context.store.dispatch({type: 'CHANGE_NAME', name: '葬爱'})
-  }
-})
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">card</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">changeName</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">change</span> <span class="nx">name</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="nx">changeName</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">context</span><span class="p">.</span><span class="nx">store</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">({</span><span class="na">type</span><span class="p">:</span> <span class="s1">'CHANGE_NAME'</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="s1">'葬爱'</span><span class="p">})</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 
-Index.contextTypes = {
-  store: React.PropTypes.object
-}
+<span class="nx">Index</span><span class="p">.</span><span class="nx">contextTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">store</span><span class="p">:</span> <span class="nx">React</span><span class="p">.</span><span class="nx">PropTypes</span><span class="p">.</span><span class="nx">object</span>
+<span class="p">}</span>
 
-export default Index
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Index</span>
 </code></pre>
+</div>
 
 <p>我们说过，<code class="highlighter-rouge">Provider</code>是用来实现<code class="highlighter-rouge">store</code>的全局访问的，它的原理就是使用react的<a href="https://facebook.github.io/react/docs/context.html">context</a>，context是可以实现跨组件之间传递的，而且不需要像props一样显式地表达，是完全透明的存在！</p>
 
@@ -718,10 +727,11 @@ export default Index
 
 <p>官方推荐了一个用于实现相同功能的middleware——<a href="#">redux-logger</a>，我们可以直接使用：</p>
 
-<pre><code class="language-jsx">// App.jsx
-import createLogger from 'redux-logger'
-const store = createStore(reducer, initState, applyMiddleware(createLogger()))
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// App.jsx</span>
+<span class="kr">import</span> <span class="nx">createLogger</span> <span class="nx">from</span> <span class="s1">'redux-logger'</span>
+<span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">createStore</span><span class="p">(</span><span class="nx">reducer</span><span class="p">,</span> <span class="nx">initState</span><span class="p">,</span> <span class="nx">applyMiddleware</span><span class="p">(</span><span class="nx">createLogger</span><span class="p">()))</span>
 </code></pre>
+</div>
 
 <p>（以上省略若干代码。。。）</p>
 

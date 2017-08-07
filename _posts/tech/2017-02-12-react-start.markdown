@@ -434,7 +434,7 @@ var vdom = {
 
 完成了一个简单的`react`之后，我们来真正写react的时候就容易理解多了：  
 
-```jsx
+```javascript
 // App.jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -559,7 +559,7 @@ component顾名思义，就是组件的意思。**组件化** 的目的是实现
 
 在react中，我们可以很容易地实现组件化，实现上面需求只需要这么写：  
 
-```jsx
+```javascript
 // App.jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -620,7 +620,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 为了实现代码的跨页面复用，我们还可以把以上的组件分别封装到独立的文件当中，然后使用es6提供的`import`方式来引入：  
 
-```jsx
+```javascript
 // App.jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
@@ -650,7 +650,7 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 注意，为了使组件能够被`import`，在编写组件的时候，你需要对应地把它`export`出来：  
 
-```jsx
+```javascript
 // Logo.jsx
 import React from 'react'
 
@@ -674,7 +674,7 @@ export default Logo
 
 有点混乱，我们简单区别一下，假设我们有一个时钟组件`clock`，它平时都是自己运行，那么它可以自己管理自己的时间，所以它的`time`就可以由`state`来管理；除了显示时间之外，它还需要展示自己所在的城市，我们希望它的城市可以订制，也就是地点是需要“被告知”的，所以它的`city`就需要由props传入。  
 
-```jsx
+```javascript
 var Clock = React.createClass({
   getInitialState: function() {
     return {
@@ -706,7 +706,7 @@ var Clock = React.createClass({
 
 我们可以在`App`组件里这样调用：  
 
-```jsx
+```javascript
 var App = React.createClass({
   render: function() {
     return <div className="g-index">
@@ -763,7 +763,7 @@ isMounted是判断当前组件是否挂载的状态，也就是说，如果`isMo
 
 ok，我们差不多有个概念以后，就可以来写`Dialog`组件了：  
 
-```jsx
+```javascript
 var Dialog = React.createClass({
   render: function() {
     var _t = this
@@ -788,7 +788,7 @@ var Dialog = React.createClass({
 
 这里我们只接收了一个关闭的方法`closeHandler`，而没有激活的方法，因为不需要，一个弹窗不需要自己激活自己，而是由外部来激活：  
 
-```jsx
+```javascript
 var App = React.createClass({
   getInitialState: function() {
     return {

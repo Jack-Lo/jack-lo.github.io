@@ -139,68 +139,70 @@
 
 <p>我们还是以上节内容当中的“时钟”例子来做演示：</p>
 
-<pre><code class="language-jsx">var Clock = React.createClass({
-  getInitialState: function() {
-    return {
-      time: new Date().toString()
-    }
-  },
-  render: function() {
-    var _t = this
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Clock</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toString</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
 
-    return &lt;div className="m-clock"&gt;
-      {_t.props.city}: {_t.state.time}
-    &lt;/div&gt;
-  },
-  componentDidMount: function() {
-    var _t = this
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"m-clock"</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">_t</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">city</span><span class="p">}:</span> <span class="p">{</span><span class="nx">_t</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">time</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
 
-    var timer = setInterval(function () {
-      if (_t.isMounted()) {
-        _t.setState({
-          time: new Date().toString()
-        })
-      } else {
-        clearInterval(timer)
-      }
-    }, 1000)
-  }
-})
+    <span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">_t</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">_t</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">().</span><span class="nx">toString</span><span class="p">()</span>
+        <span class="p">})</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <p>这里为了突出问题，我们把上一节里偷懒的部分补回来，把时间的展示格式给美化一下：</p>
 
-<pre><code class="language-jsx">var Clock = React.createClass({
-  getInitialState: function() {
-    return {
-      time: new Date()
-    }
-  },
-  render: function() {
-    var _t = this
-    var time = _t.state.time
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">Clock</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
+    <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">time</span>
 
-    return &lt;div className="m-clock"&gt;
-      {time.getHours()}:
-      {time.getMinutes()}:
-      {time.getSeconds()}
-    &lt;/div&gt;
-  },
-  componentDidMount: function() {
-    var _t = this
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"m-clock"</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">time</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()}:</span>
+      <span class="p">{</span><span class="nx">time</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">()}:</span>
+      <span class="p">{</span><span class="nx">time</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()}</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
 
-    var timer = setInterval(function () {
-      if (_t.isMounted()) {
-        _t.setState({
-          time: new Date()
-        })
-      } else {
-        clearInterval(timer)
-      }
-    }, 1000)
-  }
-})
+    <span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">_t</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">_t</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+        <span class="p">})</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <p>ok，好看多了（并没有）。</p>
 
@@ -222,73 +224,75 @@
 
 <p>为了更好地实践上面的理论，我们需要把逻辑和视图分开，写成两个部分，一部分负责逻辑计算（container component），一部分负责展示（presentational component），最后，逻辑计算部分会引入展示部分，并且将展示部分需要的参数注入：</p>
 
-<pre><code class="language-jsx">// /Clock/Clock.jsx
-import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// /Clock/Clock.jsx</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-var Clock = function(props) {
-  return &lt;div className="m-clock"&gt;
-    {props.hours}:{props.minutes}:{props.seconds}
-  &lt;/div&gt;
-}
+<span class="kd">var</span> <span class="nx">Clock</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"m-clock"</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">hours</span><span class="p">}</span><span class="err">:</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">minutes</span><span class="p">}</span><span class="err">:</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">seconds</span><span class="p">}</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
 
-export default Clock
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Clock</span>
 </code></pre>
+</div>
 
-<pre><code class="language-jsx">// /Clock/Index.jsx
-import React from 'react'
-import Clock from './Clock'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="c1">// /Clock/Index.jsx</span>
+<span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">Clock</span> <span class="nx">from</span> <span class="s1">'./Clock'</span>
 
-var ClockContainer = React.createClass({
-  getInitialState: function() {
-    return {
-      time: new Date()
-    }
-  },
-  render: function() {
-    var _t = this
-    var time = _t.state.time
+<span class="kd">var</span> <span class="nx">ClockContainer</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">getInitialState</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
+    <span class="kd">var</span> <span class="nx">time</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">time</span>
 
-    var hours = time.getHours()
-    var minutes = time.getMinutes()
-    var seconds = time.getSeconds()
+    <span class="kd">var</span> <span class="nx">hours</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">getHours</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nx">minutes</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">getMinutes</span><span class="p">()</span>
+    <span class="kd">var</span> <span class="nx">seconds</span> <span class="o">=</span> <span class="nx">time</span><span class="p">.</span><span class="nx">getSeconds</span><span class="p">()</span>
 
-    hours = _t.fix2(_t.limit(hours))
-    minutes = _t.fix2(minutes)
-    seconds = _t.fix2(seconds)
+    <span class="nx">hours</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">fix2</span><span class="p">(</span><span class="nx">_t</span><span class="p">.</span><span class="nx">limit</span><span class="p">(</span><span class="nx">hours</span><span class="p">))</span>
+    <span class="nx">minutes</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">fix2</span><span class="p">(</span><span class="nx">minutes</span><span class="p">)</span>
+    <span class="nx">seconds</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">fix2</span><span class="p">(</span><span class="nx">seconds</span><span class="p">)</span>
 
-    return &lt;Clock hours={hours} minutes={minutes} seconds={seconds} /&gt;
-  },
-  componentDidMount: function() {
-    var _t = this
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Clock</span> <span class="nx">hours</span><span class="o">=</span><span class="p">{</span><span class="nx">hours</span><span class="p">}</span> <span class="nx">minutes</span><span class="o">=</span><span class="p">{</span><span class="nx">minutes</span><span class="p">}</span> <span class="nx">seconds</span><span class="o">=</span><span class="p">{</span><span class="nx">seconds</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
 
-    var timer = setInterval(function () {
-      if (_t.isMounted()) {
-        _t.setState({
-          time: new Date()
-        })
-      } else {
-        clearInterval(timer)
-      }
-    }, 1000)
-  },
-  limit: function(num) {
-    if (num &gt; 12) {
-      return num - 12
-    }
+    <span class="kd">var</span> <span class="nx">timer</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">_t</span><span class="p">.</span><span class="nx">isMounted</span><span class="p">())</span> <span class="p">{</span>
+        <span class="nx">_t</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span>
+          <span class="na">time</span><span class="p">:</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">()</span>
+        <span class="p">})</span>
+      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="nx">clearInterval</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+  <span class="p">},</span>
+  <span class="na">limit</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&gt;</span> <span class="mi">12</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">num</span> <span class="o">-</span> <span class="mi">12</span>
+    <span class="p">}</span>
 
-    return num
-  },
-  fix2: function(num) {
-    if (num &lt; 10) {
-      return '0' + num
-    }
+    <span class="k">return</span> <span class="nx">num</span>
+  <span class="p">},</span>
+  <span class="na">fix2</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">num</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">num</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">'0'</span> <span class="o">+</span> <span class="nx">num</span>
+    <span class="p">}</span>
 
-    return num
-  }
-})
+    <span class="k">return</span> <span class="nx">num</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 
-export default ClockContainer
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">ClockContainer</span>
 </code></pre>
+</div>
 
 <p>以上，我们便实现了关注点分离，可以看到展示组件非常简洁，而容器组件也只关注逻辑计算。</p>
 
@@ -304,20 +308,21 @@ export default ClockContainer
 
 <p>理论上来说，你大可以各种拼装 <strong>容器组件</strong>，比如页面<code class="highlighter-rouge">Index</code>可以只有：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-require('../../../style/index')
+<span class="nx">require</span><span class="p">(</span><span class="s1">'../../../style/index'</span><span class="p">)</span>
 
-var Index = function(props) {
-  return &lt;div className="g-index"&gt;
-    &lt;Header /&gt;
-    &lt;Content /&gt;
-    &lt;Footer /&gt;
-  &lt;/div&gt;
-}
+<span class="kd">var</span> <span class="nx">Index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Header</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Content</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Footer</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
 
-export default Index
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Index</span>
 </code></pre>
+</div>
 
 <p>然后再分别去构建<code class="highlighter-rouge">&lt;Header /&gt;</code>、<code class="highlighter-rouge">&lt;Content /&gt;</code>、<code class="highlighter-rouge">&lt;Footer /&gt;</code>三部分，这样一步步细分下去。</p>
 
@@ -339,21 +344,22 @@ export default Index
 
 <p>使用react集成router很简单，直接install<code class="highlighter-rouge">react-router</code>即可：</p>
 
-<pre><code class="language-jsx">import React, { Component, PropTypes } from 'react'
-import ReactDom from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDom</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">hashHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import Index from './containers/Index'
-import About from './containers/About'
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">'./containers/Index'</span>
+<span class="kr">import</span> <span class="nx">About</span> <span class="nx">from</span> <span class="s1">'./containers/About'</span>
 
-ReactDom.render(
-  &lt;Router history={hashHistory}&gt;
-    &lt;Route path="/" component={Index}/&gt;
-    &lt;Route path="/about" component={About}/&gt;
-  &lt;/Router&gt;,
-  document.getElementById('root')
-)
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Index</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/about"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">About</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/Router&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
 <p>每个Route就是一个路由规则，path对应路径，component即对应要显示的容器组件，也就是我们前面说的页面。所以现在我们访问<code class="highlighter-rouge">/</code>，可以看到链接自动变成了访问<code class="highlighter-rouge">/#/</code>，同时显示<code class="highlighter-rouge">Index</code>的内容，然后我们访问<code class="highlighter-rouge">/#/about</code>，会发现页面变成了<code class="highlighter-rouge">About</code>的内容。</p>
 
@@ -365,24 +371,25 @@ ReactDom.render(
 
 <p>我当前使用的版本是<code class="highlighter-rouge">3.0.2</code>，它会直接在匹配的component的props中注入一个router对象，所以我们可以在component中直接调用：</p>
 
-<pre><code class="language-jsx">const Index = React.createClass({
-  render: function() {
-    return &lt;div className="g-index"&gt;
-      ...
-    &lt;/div&gt;
-  },
-  componentDidMount: function() {
-    var _t = this
-    var router = _t.props.router
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Index</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">createClass</span><span class="p">({</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+      <span class="p">...</span>
+    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="na">componentDidMount</span><span class="p">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">_t</span> <span class="o">=</span> <span class="k">this</span>
+    <span class="kd">var</span> <span class="nx">router</span> <span class="o">=</span> <span class="nx">_t</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">router</span>
 
-    setTimeout(function () {
-      router.push({
-        pathname: '/about'
-      })
-    }, 2000)
-  }
-})
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">router</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+        <span class="na">pathname</span><span class="p">:</span> <span class="s1">'/about'</span>
+      <span class="p">})</span>
+    <span class="p">},</span> <span class="mi">2000</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">})</span>
 </code></pre>
+</div>
 
 <p>上面实现的是，在进入index页面2s后，页面自动跳转到about页面，是不是很简单？</p>
 
@@ -420,20 +427,21 @@ ReactDom.render(
 
 <p>如果你认真在看我上面的演示代码，在看到页面容器组件的时候，你一定会留意到，我在每个组件的最外层元素，都会定义一个根<code class="highlighter-rouge">className</code>，再看一遍：</p>
 
-<pre><code class="language-jsx">import React from 'react'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
 
-require('../../../style/index')
+<span class="nx">require</span><span class="p">(</span><span class="s1">'../../../style/index'</span><span class="p">)</span>
 
-var Index = function(props) {
-  return &lt;div className="g-index"&gt;
-    &lt;Header /&gt;
-    &lt;Content /&gt;
-    &lt;Footer /&gt;
-  &lt;/div&gt;
-}
+<span class="kd">var</span> <span class="nx">Index</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">className</span><span class="o">=</span><span class="s2">"g-index"</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Header</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Content</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Footer</span> <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
 
-export default Index
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">Index</span>
 </code></pre>
+</div>
 
 <p><code class="highlighter-rouge">g-index</code>是这个页面的根class，也就是说，凡是属于这个页面的css内容，都必须包裹在它内部，这里粗略贴一下我的<code class="highlighter-rouge">index.scss</code>：</p>
 
@@ -514,45 +522,47 @@ export default Index
 
 <p>回头看我们的路由：</p>
 
-<pre><code class="language-jsx">import React, { Component, PropTypes } from 'react'
-import ReactDom from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDom</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">hashHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import Index from './containers/Index'
-import About from './containers/About'
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">'./containers/Index'</span>
+<span class="kr">import</span> <span class="nx">About</span> <span class="nx">from</span> <span class="s1">'./containers/About'</span>
 
-ReactDom.render(
-  &lt;Router history={hashHistory}&gt;
-    &lt;Route path="/" component={Index}/&gt;
-    &lt;Route path="/about" component={About}/&gt;
-  &lt;/Router&gt;,
-  document.getElementById('root')
-)
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Index</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/about"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">About</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/Router&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
 <p>用户进入页面的时候，除了首页<code class="highlighter-rouge">Index</code>需要快速呈现之外，其他的路由都不需要第一时间加载，幸运的是，react-router允许我们使用回调的方式来载入页面！</p>
 
 <p>那么我们可以稍微改造一下：</p>
 
-<pre><code class="language-jsx">import React, { Component, PropTypes } from 'react'
-import ReactDom from 'react-dom'
-import { Router, Route, IndexRoute, hashHistory } from 'react-router'
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span><span class="p">,</span> <span class="nx">PropTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span>
+<span class="kr">import</span> <span class="nx">ReactDom</span> <span class="nx">from</span> <span class="s1">'react-dom'</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">Router</span><span class="p">,</span> <span class="nx">Route</span><span class="p">,</span> <span class="nx">IndexRoute</span><span class="p">,</span> <span class="nx">hashHistory</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react-router'</span>
 
-import Index from './containers/Index'
+<span class="kr">import</span> <span class="nx">Index</span> <span class="nx">from</span> <span class="s1">'./containers/Index'</span>
 
-ReactDom.render(
-  &lt;Router history={hashHistory}&gt;
-    &lt;Route path="/" component={Index}/&gt;
-    &lt;Route path="/index" getComponent={(nextState, cb) =&gt; {
-      require.ensure(['./containers/About'], function(require) {
-        var About = require('./containers/About').default
-        cb(null, About)
-      })
-    }}/&gt;
-  &lt;/Router&gt;,
-  document.getElementById('root')
-)
+<span class="nx">ReactDom</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">Router</span> <span class="nx">history</span><span class="o">=</span><span class="p">{</span><span class="nx">hashHistory</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/"</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Index</span><span class="p">}</span><span class="sr">/</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">"/index"</span> <span class="nx">getComponent</span><span class="o">=</span><span class="p">{(</span><span class="nx">nextState</span><span class="p">,</span> <span class="nx">cb</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">require</span><span class="p">.</span><span class="nx">ensure</span><span class="p">([</span><span class="s1">'./containers/About'</span><span class="p">],</span> <span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">About</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'./containers/About'</span><span class="p">).</span><span class="k">default</span>
+        <span class="nx">cb</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">About</span><span class="p">)</span>
+      <span class="p">})</span>
+    <span class="p">}}</span><span class="sr">/</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/Router&gt;</span><span class="err">,
+</span>  <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s1">'root'</span><span class="p">)</span>
+<span class="p">)</span>
 </code></pre>
+</div>
 
 <p>这样一组合，就实现了我们所期待的按需加载，同时有效减少了首屏应用的体积，达到加速首屏的目的。</p>
 
