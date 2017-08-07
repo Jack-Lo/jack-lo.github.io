@@ -1,0 +1,11 @@
+- name: Home
+  path: /
+
+- name: Tech
+  path: /tech
+
+- name: Life
+  path: /life
+
+- name: About
+  path: /about

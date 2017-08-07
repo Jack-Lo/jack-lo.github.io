@@ -1,0 +1,13 @@
+<div class="m-nav_side">
+  <div class="list">
+  {% for route in site.data.routes %}
+    <div class="item">
+      {% if route.name == include.nav %}
+      <span class="nav" href="{{ route.path }}">{{ route.name }}</span>
+      {% else %}
+      <a class="nav" href="{{ route.path }}">{{ route.name }}</a>
+      {% endif %}
+    </div>
+  {% endfor %}
+  </div>
+</div>

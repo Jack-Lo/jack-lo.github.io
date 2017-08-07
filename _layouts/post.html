@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="{{site.url}}/assets/style/base.css">
+    <link rel="stylesheet" href="{{site.url}}/assets/style/syntax.css">
+  </head>
+  <body>
+    {% include header.html nav=page.nav file=page.title %}
+    <div class="g-bd">
+      <div class="m-post">
+        <h1 class="title">{{ page.title }}</h1>
+        <p><small>{{ page.date | date_to_string }}</small></p>
+        {{ content }}
+      </div>
+    </div>
+    {% include footer.html %}
+  </body>
+</html>

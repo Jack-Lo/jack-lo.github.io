@@ -1,0 +1,47 @@
+@mixin m-nav {
+  .m-nav {
+    .nav {
+      font-weight: bold;
+      margin-right: 20px;
+    }
+  }
+}
+
+@mixin m-motto {
+  .m-motto {
+    color: #999;
+    text-align: center;
+  }
+}
+
+@mixin m-404 {
+  .m-404 {
+    margin: 1rem auto;
+    text-align: center;
+
+    h1 {
+      margin: 2rem 0;
+      font-size: 4em;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+  }
+}
+
+@mixin m-posts {
+  .m-posts {
+    a {
+      &:visited {
+        color: #999;
+      }
+    }
+  }
+}
+
+@mixin m-post {
+  .m-post {
+    .title {
+      font-size: 1.4rem;
+    }
+  }
+}

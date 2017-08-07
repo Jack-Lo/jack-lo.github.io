@@ -1,0 +1,16 @@
+<div class="g-hd">
+  <div class="m-nav">
+  {% for route in site.data.routes %}
+    {% if route.name == include.nav %}
+    {% if include.file %}
+    <span class="nav"><a href="{{ route.path }}">{{ route.name }}</a> / {{ include.file }}</span>
+    {% else %}
+    <span class="nav">{{ route.name }}</span>
+    {% endif %}
+    {% else %}
+    <a class="nav" href="{{ route.path }}">{{ route.name }}</a>
+    {% endif %}
+  {% endfor %}
+  </div>
+  <hr>
+</div>

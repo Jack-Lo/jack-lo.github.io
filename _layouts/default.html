@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ site.title }}</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
+    <link rel="stylesheet" href="{{site.url}}/assets/style/base.css">
+    <link rel="stylesheet" href="{{site.url}}/assets/style/syntax.css">
+  </head>
+  <body>
+    {% include header.html %}
+    <div class="g-bd">
+    {{ content }}
+    </div>
+    {% include footer.html %}
+  </body>
+</html>

@@ -1,0 +1,38 @@
+---
+---
+@import 'normalize';
+@import 'mixin';
+
+html {
+  font-size: 16px;
+}
+
+body {
+  color: #333;
+  margin: .8rem;
+  line-height: 1.5;
+}
+
+a {
+  color: #006abb;
+}
+
+blockquote {
+  background-color: #efefef;
+  border-left: 3px solid #ccc;
+  padding: .1rem 1rem;
+  margin: 0;
+}
+
+.highlighter-rouge {
+  background: #e7e7e7;
+  padding: .1rem .5rem;
+  font-size: .8rem;
+  border-radius: 5px;
+}
+
+@include m-nav;
+@include m-motto;
+@include m-404;
+@include m-posts;
+@include m-post;
