@@ -59,3 +59,6 @@ typings/
 
 # cache
 .sass-cache/
+
+# local
+_site
