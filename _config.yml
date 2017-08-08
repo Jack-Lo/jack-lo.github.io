@@ -31,6 +31,8 @@ markdown: kramdown
 plugins:
   - jekyll-feed
 
+gems:
+  - jekyll-feed
 # Sass settings
 sass:
   sass_dir: assets/style
