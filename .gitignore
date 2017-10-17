@@ -62,7 +62,6 @@ typings/
 
 # local
 _site
-.DS_Store
 
 # Gem
 Gemfile.lock
