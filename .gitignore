@@ -62,3 +62,6 @@ typings/
 
 # local
 _site
+
+# Gem
+Gemfile.lock
