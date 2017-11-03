@@ -22,8 +22,8 @@ nav: About
 ### Home page
 
 - [Github](https://github.com/jack-Lo)
-- [知乎](https://www.zhihu.com/people/jack_lo/answers)
 - [简书](http://www.jianshu.com/u/5aa6cf3cec28)
+- [知乎](https://www.zhihu.com/people/jack_lo/answers)
 
 
 ### Technology stack
