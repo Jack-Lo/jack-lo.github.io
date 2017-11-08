@@ -1,2 +1,3 @@
 # jack-lo.github.io
-My blog.
+
+[Home Page](http://jack-lo.github.io)

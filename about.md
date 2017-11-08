@@ -15,14 +15,15 @@ nav: About
 }
 ```
 
-2014年1月份入行至今，目前就职于[荔枝FM](https://www.lizhi.fm)（广州荔支网络技术有限公司）
+- 2014年1月份入行
+- 现就职于[荔枝FM](https://www.lizhi.fm)
 
 
 ### Home page
 
 - [Github](https://github.com/jack-Lo)
-- [知乎](https://www.zhihu.com/people/jack_lo/answers)
 - [简书](http://www.jianshu.com/u/5aa6cf3cec28)
+- [知乎](https://www.zhihu.com/people/jack_lo/answers)
 
 
 ### Technology stack
@@ -30,8 +31,15 @@ nav: About
 - 传统：原生js/jQuery
 - 流行框架：Vue/React/Vuex/Redux/Router
 - 打包工具：Webpack/Rollup/Gulp
-- 开发环境：MacOS（主要）/Windows
+- 开发环境：MacOS
 - 其他：Nodejs（工具开发）
+
+
+### Keyword
+
+- 模块化、组件化、工程化、自动化
+- 工具开发、框架开发
+- 学习能力、思考力、耐力
 
 
 ### Contact me
